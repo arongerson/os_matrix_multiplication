@@ -38,6 +38,10 @@ public class Matrix {
 		array[i][j] = value;
 	}
 	
+	public int getIJValue(int i, int j) {
+		return array[i][j];
+	}
+	
 	public boolean isCompatible(Matrix matrix) {
 		return numberOfColumns == matrix.getRows();
 	}
@@ -49,21 +53,6 @@ public class Matrix {
 			 sum += rowArray[i] * matrix.array[i][column];
 		 }
 		 return sum;
-	}
-	
-	public void print() {
-		for (int i = 0; i < numberOfRows; i++) {
-			System.out.print("["); 
-			for (int j = 0; j < numberOfColumns; j++) {
-				String sign = "";
-				int number = array[i][j];
-				if (number >= 0) {
-					sign = "+";
-				}
-				System.out.print(sign + number + "\t");
-			}
-			System.out.print("]\n");
-		}
 	}
 	
 }
