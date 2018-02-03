@@ -1,20 +1,20 @@
 package matrices;
 
+import java.util.Random;
+
 public class MatrixMultiplication {
 	
 	
 	public static void main(String[] args) { 
-		Matrix A = new Matrix(new int [][] {
-			{1, 2},
-			{3, 4}
-			});
-		Matrix B = new Matrix(new int [][] {
-			{1, 2},
-			{3, 4}
-			});
+		int rowsA = 3;
+		int colsA = 4;
+		int rowsB = 4;
+		int colsB = 2;
+		Matrix A = new Matrix(getRandomArray(rowsA, colsA));
+		Matrix B = new Matrix(getRandomArray(rowsB, colsB));
 		Matrix C = null;
 		if (A.isCompatible(B)) {
-			C = new Matrix(A.getCols(), B.getRows());
+			C = new Matrix(A.getRows(), B.getCols());
 		}
 		int threadCount = A.getRows() * B.getCols();
 		int threadIndex = 0;
@@ -33,7 +33,22 @@ public class MatrixMultiplication {
 				e.printStackTrace();
 			}
 		}
+		A.print();
+		System.out.println("------------------------------"); 
+		B.print();
+		System.out.println("=============================="); 
 		C.print();
+	}
+	
+	public static int[][] getRandomArray(int rows, int columns) {
+		int[][] array = new int[rows][columns];
+		Random random = new Random();
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < columns; j++) {
+				array[i][j] = -9 + random.nextInt(19); // random ints between -9 and 9 inclusive
+			}
+		}
+		return array;
 	}
 
 }

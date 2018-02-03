@@ -54,8 +54,13 @@ public class Matrix {
 	public void print() {
 		for (int i = 0; i < numberOfRows; i++) {
 			System.out.print("["); 
-			for (int j = 0; j < numberOfRows; j++) {
-				System.out.print(array[i][j] + "\t"); 
+			for (int j = 0; j < numberOfColumns; j++) {
+				String sign = "";
+				int number = array[i][j];
+				if (number >= 0) {
+					sign = "+";
+				}
+				System.out.print(sign + number + "\t");
 			}
 			System.out.print("]\n");
 		}
